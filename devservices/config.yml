@@ -1,0 +1,12 @@
+x-sentry-service-config:
+  version: 0.1
+  service_name: shared-redis
+  dependencies: {}
+  modes:
+    default: []
+  
+services:
+  redis:
+    image: "redis:6.2.14-alpine"
+    healthcheck:
+      test: redis-cli ping
