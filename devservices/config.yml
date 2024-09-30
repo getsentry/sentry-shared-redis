@@ -1,6 +1,6 @@
 x-sentry-service-config:
   version: 0.1
-  service_name: redis
+  service_name: shared-redis
   dependencies: {}
   modes:
     default: []
