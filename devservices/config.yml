@@ -1,12 +1,14 @@
 x-sentry-service-config:
   version: 0.1
   service_name: shared-redis
-  dependencies: {}
+  dependencies:
+    shared-redis:
+      description: Open-source, in-memory database that stores data as key-value pairs in RAM
   modes:
-    default: []
-  
+    default: [shared-redis]
+
 services:
-  redis:
+  shared-redis:
     image: "redis:6.2.14-alpine"
     healthcheck:
       test: redis-cli ping
