@@ -32,5 +32,4 @@ services:
 
 networks:
   sentry:
-    name: sentry # Uses environment variable if set, defaults to sentry-network
-    external: true  # Indicates this network is created externally
+    name: sentry
