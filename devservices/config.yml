@@ -1,6 +1,6 @@
 x-sentry-service-config:
   version: 0.1
-  service_name: redis
+  service_name: shared-redis
   dependencies:
     redis:
       description: Open-source, in-memory database that stores data as key-value pairs in RAM
@@ -28,14 +28,14 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - 'sentry-redis:/data'
+      - 'redis-data:/data'
     networks:
       - sentry
     extra_hosts:
       - "host.docker.internal:host-gateway" # Allow host.docker.internal to resolve to the host machine
 
 volumes:
-  sentry-redis:
+  redis-data:
 
 networks:
   sentry:
