@@ -31,6 +31,8 @@ services:
       - 'sentry-redis:/data'
     networks:
       - sentry
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # Allow host.docker.internal to resolve to the host machine
 volumes:
   sentry-redis:
 
