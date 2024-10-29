@@ -1,12 +1,42 @@
 x-sentry-service-config:
   version: 0.1
   service_name: shared-redis
-  dependencies: {}
+  dependencies:
+    redis:
+      description: Open-source, in-memory database that stores data as key-value pairs in RAM
   modes:
-    default: []
-  
+    default: [redis]
+
 services:
   redis:
-    image: "redis:6.2.14-alpine"
+    image: ghcr.io/getsentry/image-mirror-library-redis:5.0-alpine
     healthcheck:
       test: redis-cli ping
+    command:
+      [
+        'redis-server',
+        '--appendonly',
+        'yes',
+        '--save',
+        '60',
+        '20',
+        '--auto-aof-rewrite-percentage',
+        '100',
+        '--auto-aof-rewrite-min-size',
+        '64mb',
+      ]
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+    networks:
+      - sentry
+    extra_hosts:
+      - host.docker.internal:host-gateway # Allow host.docker.internal to resolve to the host machine
+
+volumes:
+  redis-data:
+
+networks:
+  sentry:
+    name: sentry
