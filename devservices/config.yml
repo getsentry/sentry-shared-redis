@@ -26,13 +26,13 @@ services:
         '64mb',
       ]
     ports:
-      - '6379:6379'
+      - 6379:6379
     volumes:
-      - 'redis-data:/data'
+      - redis-data:/data
     networks:
       - sentry
     extra_hosts:
-      - "host.docker.internal:host-gateway" # Allow host.docker.internal to resolve to the host machine
+      - host.docker.internal:host-gateway # Allow host.docker.internal to resolve to the host machine
 
 volumes:
   redis-data:
