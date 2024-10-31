@@ -30,7 +30,7 @@ services:
     volumes:
       - redis-data:/data
     networks:
-      - sentry
+      - devservices
     extra_hosts:
       - host.docker.internal:host-gateway # Allow host.docker.internal to resolve to the host machine
 
@@ -38,5 +38,5 @@ volumes:
   redis-data:
 
 networks:
-  sentry:
-    name: sentry
+  devservices:
+    name: devservices
