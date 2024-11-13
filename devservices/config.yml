@@ -12,9 +12,9 @@ services:
     image: ghcr.io/getsentry/image-mirror-library-redis:5.0-alpine
     healthcheck:
       test: redis-cli ping
-      interval: 10s
+      interval: 1s
       timeout: 5s
-      retries: 5
+      retries: 3
     command:
       [
         'redis-server',
