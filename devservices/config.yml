@@ -36,6 +36,7 @@ services:
       - devservices
     extra_hosts:
       - host.docker.internal:host-gateway # Allow host.docker.internal to resolve to the host machine
+    restart: unless-stopped
 
 volumes:
   redis-data:
@@ -43,3 +44,4 @@ volumes:
 networks:
   devservices:
     name: devservices
+    external: true
